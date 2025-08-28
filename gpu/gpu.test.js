@@ -1,6 +1,6 @@
 // Define the points structure similar to the Python runner, mapping test names to [pass, total]
 let points = {
-    'gpu opt': [0]
+    'gpu opt': [0, 19500]
 };
 // const { assert } = require('console');
 // const fs = require('fs');  // 引入 fs 模块
