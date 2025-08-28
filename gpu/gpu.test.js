@@ -28,15 +28,16 @@ function myjudge(outputFile) {
         return;
     }
     // 2. 提取 CPU OPT 的 GFLOPS 数字
-    const match = outputFile.match(/GPU OPT:\s*[\d.]+\s*ms,\s*([\d.]+)\s*GFLOPS/);
+    const match = outputFile.match(/([\d.]+)\s*GFLOPS/);
     const gflops = match ? parseFloat(match[1]) : null;
-    points['gpu opt'][0] = gflops;
+    const gflops1 = Math.round(gflops)
+    points['gpu opt'][0] = gflops1;
 }
 
 function judge(outputFile){
-    let start = outputFile.indexOf('start---gpu-opt');
+    let start = outputFile.indexOf('GPU OPT:');
     let end = outputFile.indexOf('end---gpu-opt', start);
-    myjudge(outputFile.substring(start + 'start---gpu-opt'.length, end));
+    myjudge(outputFile.substring(start + 'GPU OPT:'.length, end));
     return points;
 } 
 
